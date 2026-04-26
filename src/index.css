@@ -1,0 +1,15 @@
+/* Smooth section transitions */
+section {
+  transition: opacity 0.5s ease;
+}
+
+/* Better focus states */
+input:focus, textarea:focus {
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.3);
+}
+
+/* Mobile improvements */
+@media (max-width: 640px) {
+  .text-7xl { font-size: 3rem; }
+  .text-5xl { font-size: 2.5rem; }
+}

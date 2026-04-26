@@ -1,15 +1,111 @@
-/* Smooth section transitions */
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #7c3aed;
+  --color-secondary: #06b6d4;
+  --color-accent: #f59e0b;
+  --color-dark: #0a0a0f;
+  --color-darker: #05050a;
+  --color-card: #111827;
+
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "Fira Code", monospace;
+}
+
+@utility glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+}
+
+@utility gradient-text {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility gradient-border {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.03)) padding-box,
+    linear-gradient(135deg, rgba(124, 58, 237, 0.45), rgba(6, 182, 212, 0.45)) border-box;
+}
+
+@utility glow-purple {
+  box-shadow:
+    0 0 24px rgba(124, 58, 237, 0.24),
+    0 0 56px rgba(6, 182, 212, 0.14);
+}
+
+@utility animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@utility animate-slide-up {
+  animation: slide-up 0.8s ease-out;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+:root {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top, rgba(124, 58, 237, 0.22), transparent 36%),
+    radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.16), transparent 26%),
+    linear-gradient(180deg, var(--color-dark), var(--color-darker));
+  color: white;
+  font-family: var(--font-sans);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 section {
   transition: opacity 0.5s ease;
 }
 
-/* Better focus states */
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.3);
-}
-
-/* Mobile improvements */
-@media (max-width: 640px) {
-  .text-7xl { font-size: 3rem; }
-  .text-5xl { font-size: 2.5rem; }
 }

@@ -1,4 +1,3 @@
-import './index.css'
 import ParticlesBackground from './components/ParticlesBackground'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'

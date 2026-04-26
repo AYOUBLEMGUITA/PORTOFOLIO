@@ -1,5 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaCode } from "react-icons/fa";
+import heroImage from "../assets/hero.png";
 
 const stats = [
   { number: "10+", label: "Projects" },
@@ -9,6 +10,7 @@ const stats = [
 
 export default function About() {
   const ref = useRef(null);
+  const [imageSrc, setImageSrc] = useState("/profile.jpg");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -47,7 +49,23 @@ export default function About() {
             <div className="relative">
               <div className="h-64 w-64 animate-float rounded-2xl bg-gradient-to-br from-purple-600 to-cyan-500 p-1">
                 <div className="bg-card flex h-full w-full items-center justify-center rounded-2xl">
-                  <FaCode className="text-7xl text-white" />
+                  {imageSrc ? (
+                    <img
+                      src={imageSrc}
+                      alt="Ayoub LEMGUITA"
+                      className="h-full w-full rounded-2xl object-cover"
+                      onError={() => {
+                        if (imageSrc !== heroImage) {
+                          setImageSrc(heroImage);
+                          return;
+                        }
+
+                        setImageSrc(null);
+                      }}
+                    />
+                  ) : (
+                    <FaCode className="text-7xl text-white" />
+                  )}
                 </div>
               </div>
 
